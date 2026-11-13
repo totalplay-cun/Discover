@@ -11,7 +11,6 @@
 })();
 </script>
 <!-- Meta Pixel Code -->
-<!-- IMPORTANTE: reemplaza TU_PIXEL_ID_TOTALPLAY por el Pixel ID real de la cuenta de Totalplay antes de publicar. -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,11 +20,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'TU_PIXEL_ID_TOTALPLAY');
+fbq('init', '1408393387750400');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=TU_PIXEL_ID_TOTALPLAY&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1408393387750400&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <meta charset="utf-8">
@@ -556,7 +555,7 @@ const I18N = {
     precio_final_label: "Precio final", sin_cargos: "Sin cargos ocultos",
     fibra_dedicada: "Fibra óptica simétrica dedicada, con instalación incluida",
     mes_suffix: "/mes",
-    nota_sube: "Con {monto} más al mes {a}subes a {mb} MB{/a}.",
+    nota_sube: "Con {monto} más al mes {a}subes a {mb}{/a}.",
     nota_presupuesto_alcanza: "Con tu presupuesto también alcanzas {mb} MB por {precio} al mes, si quieres ir por más velocidad.",
     btn_solicitar: "Solicitar esta cotización",
     back_to_results: "Volver a resultados",
@@ -641,7 +640,7 @@ const I18N = {
     precio_final_label: "Final price", sin_cargos: "No hidden fees",
     fibra_dedicada: "Dedicated symmetric fiber optic, installation included",
     mes_suffix: "/month",
-    nota_sube: "For {monto} more a month you can {a}upgrade to {mb} MB{/a}.",
+    nota_sube: "For {monto} more a month you can {a}upgrade to {mb}{/a}.",
     nota_presupuesto_alcanza: "With your budget you can also get {mb} MB for {precio} a month, if you'd like more speed.",
     btn_solicitar: "Request this quote",
     back_to_results: "Back to results",
@@ -857,8 +856,12 @@ const estado = {
 const num = n => Math.round(n).toLocaleString("es-MX");
 const pesos = n => "$" + num(n);
 
+// Eventos estándar de Meta van con 'track'; los propios (IniciaDiagnostico,
+// CoberturaPositiva, CoberturaNegativa) van con 'trackCustom'.
+const EVENTOS_ESTANDAR = ['PageView','Lead','Contact','InitiateCheckout','ViewContent','CompleteRegistration','Schedule','SubmitApplication'];
 function evento(nombre, params){
-  if (typeof fbq === 'function') fbq('track', nombre, params || {});
+  if (typeof fbq !== 'function') return;
+  fbq(EVENTOS_ESTANDAR.includes(nombre) ? 'track' : 'trackCustom', nombre, params || {});
 }
 
 // ============ COBERTURA ============
@@ -1069,12 +1072,13 @@ function planPara(planes, idxIdeal){
   return { plan, limitado: idxReal < idxIdeal, alcanzaMas: mayor };
 }
 
-// Cambia la cotización mostrada al plan ideal (el del enlace "subes a X MB").
-function cambiarAPlanIdeal(){
+// Cambia la cotización mostrada al plan del índice indicado (enlace "subes a X").
+function cambiarAPlan(indice){
   const catalogo = estado.quiereTV ? CATALOGO_TV : CATALOGO_INTERNET;
-  const planIdeal = catalogo[indiceIdeal()];
-  estado.presupuesto = planIdeal.precio;
-  estado.planInfo = { plan: planIdeal, limitado: false, alcanzaMas: null };
+  const plan = catalogo[indice];
+  if(!plan) return;
+  estado.presupuesto = plan.precio;
+  estado.planInfo = { plan: plan, limitado: false, alcanzaMas: null };
   mostrarResultados(true);
 }
 
@@ -1129,15 +1133,18 @@ function tarjetaPlan(){
       '<div class="font-body-sm text-body-sm text-on-surface-variant">' + T('fibra_dedicada') + '</div>' +
     '</div>';
 
+  // Nota con enlace al plan consecutivo (el siguiente en el catálogo).
+  // En el plan más alto (10 Gigas) no hay siguiente, así que no se muestra.
   let notas = '';
-  if(info.limitado){
-    const planes = esTV ? CATALOGO_TV : CATALOGO_INTERNET;
-    const idxIdeal = indiceIdeal();
-    const ideal = planes[idxIdeal];
+  const catalogo = esTV ? CATALOGO_TV : CATALOGO_INTERNET;
+  const idxActual = catalogo.indexOf(plan);
+  const siguiente = catalogo[idxActual + 1];
+  if(idxActual !== -1 && siguiente){
     notas += '<p class="font-label text-label text-ink-soft mt-3">' +
              T('nota_sube', {
-               monto: pesos(ideal.precio - plan.precio), mb: ideal.label,
-               a: '<button type="button" class="underline font-bold text-signal hover:opacity-80 transition-opacity" onclick="cambiarAPlanIdeal()">',
+               monto: pesos(siguiente.precio - plan.precio),
+               mb: siguiente.label + (siguiente.mb >= 1000 ? '' : ' MB'),
+               a: '<button type="button" class="underline font-bold text-signal hover:opacity-80 transition-opacity" onclick="cambiarAPlan(' + (idxActual + 1) + ')">',
                '/a': '</button>' }) + '</p>';
   }
 
