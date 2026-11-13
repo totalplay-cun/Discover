@@ -120,6 +120,8 @@ tailwind.config = {
         --signal:#F04E98;
         --signal-glow: rgba(240,78,152,0.28);
         --signal-deep:#22223E;
+        --speed:#8246AF;
+        --acento-texto:#E4002B;
         --secondary:#5C8A21;
         --secondary-deep:#4C7A1D;
         --secondary-bg: rgba(141,198,63,0.14);
@@ -139,6 +141,8 @@ tailwind.config = {
         --surface-lowest:#0E0F13;
         --signal-glow: rgba(240,78,152,0.35);
         --signal-deep:#6FD3EF;
+        --speed:#6FD3EF;
+        --acento-texto:#DBE442;
         --secondary:#8DC63F;
         --secondary-deep:#BCE88F;
         --secondary-bg: rgba(141,198,63,0.2);
@@ -360,7 +364,7 @@ tailwind.config = {
 <!-- Step 3: TV preference -->
 <div class="step-container" id="step-3">
 <h2 class="font-section-title text-section-title mb-2 text-2xl" data-i18n="step3_title">¿Quieres agregar TV?</h2>
-<p class="font-body-sm text-body-sm text-ink-soft mb-8" data-i18n="step3_subtitle">Con esto armamos tu cotización: solo Internet, o Internet + TV Totalplay.</p>
+<p class="font-body-sm text-body-sm text-ink-soft mb-8" data-i18n="step3_subtitle">Con esto armamos tu cotización: solo Internet, o Internet + Totalplay TV.</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
 <button class="btn-secondary rounded-lg p-6 flex flex-col items-center gap-2 text-center" data-tv="no" onclick="toggleTv(false, this)">
 <span class="material-symbols-outlined text-3xl mb-1 text-signal-deep">wifi</span>
@@ -419,7 +423,7 @@ tailwind.config = {
 <section class="w-full hidden" id="results-section">
 <div class="text-center mb-8">
 <h2 class="font-section-title text-section-title mb-4" data-i18n="results_title">Tu Cotización Totalplay</h2>
-<p class="font-subheading text-subheading text-secondary" id="res-subtitulo"></p>
+<p class="font-subheading text-subheading" id="res-subtitulo" style="color:var(--acento-texto);"></p>
 <p class="font-body-sm text-body-sm text-ink-soft max-w-2xl mx-auto mt-4 opacity-70" data-i18n="results_disclaimer" style="font-size:12px; line-height:1.5;">(Esta demostración se genera con los datos que tú mismo ingresaste; es una simulación ilustrativa. Precios de referencia sujetos a la promoción vigente y a la disponibilidad en tu zona.)</p>
 </div>
 <div class="hidden mb-8 mx-auto max-w-2xl rounded-lg py-3 px-4 font-body-sm text-body-sm border border-signal bg-surface-container-high text-ink" id="nota-presupuesto"></div>
@@ -454,8 +458,10 @@ tailwind.config = {
 <footer class="w-full py-section-desktop border-t border-line bg-surface-container-lowest mt-auto relative z-10">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-mobile max-w-container-max mx-auto">
 <div class="col-span-1 lg:col-span-2">
-<svg class="h-8 w-auto mb-4 block dark:hidden" width="147" height="31" viewBox="0 0 147 31" preserveAspectRatio="xMidYMid meet" style="aspect-ratio:147/31" xmlns="http://www.w3.org/2000/svg"><path id="Fill-6" d="M132.8,24.5c-1.8,4.6 -2.7,5.6 -6,5.6c-0.5,0 -1.1,0 -2.1,-0.1l0,-3.2c0.2,0 0.7,0.1 1.5,0.1c1.5,0 1.8,-0.4 2.3,-1.6l0.6,-1.6l-5.3,-13.4l4.2,0l3.2,9.5l0.1,0l3.1,-9.5l4.1,0l-5.7,14.2Zm-114.9,-6.2c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#e4002b"/><path id="Fill-7" d="M119.3,20.5c-0.9,0.6 -1.9,1.1 -3.1,1.1c-1.1,0 -1.8,-0.7 -1.8,-1.8c0,-2.4 3.1,-2.4 4.8,-2.4l0,3.1l0.1,0Zm3.8,0.1l0,-5.2c0,-3.9 -1.5,-5.5 -5.4,-5.5c-2.4,0 -4.4,0.5 -6.5,1.6l1.2,2.6c1.5,-0.8 3.2,-1.4 5,-1.4c1.4,0 2,0.4 2,1.7l0,0.6c-3.4,0 -8.5,0.4 -8.5,4.9c0,2.6 1.8,4.1 4.4,4.1c1.7,0 3.2,-0.6 4.5,-1.6l0,0.2c0.4,1.3 2.7,1.4 4.3,1.3l0.1,-2.9c-0.7,0.1 -1.1,0 -1.1,-0.4Zm-115.2,-15.5c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.6,-0.3 -1,0 -1,0.6l0,7.7c0,0.6 0.4,0.8 1,0.6l6.9,-3.9Z" fill="#ffbf3f"/><path id="Fill-3" d="M105.1,24.1l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-96.3,-0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#dbe442"/><path id="Fill-5" d="M96.9,24.2c-1.6,0 -2.5,-0.4 -3.4,-1.7l-0.1,0l0,6.9l-3.8,0l0,-19.2l3.2,0l0.2,1.6l0.1,0c1,-1.4 2.2,-1.9 3.8,-1.9c4.1,0 5.8,3.3 5.8,7c0.1,3.9 -1.5,7.3 -5.8,7.3m-0.9,-11.1c-1.6,0 -2.6,0.6 -2.6,2.4l0,3c0,1.9 0.6,3.1 2.6,3.1c2.5,0 2.8,-2.3 2.8,-4.4c0,-2.2 -0.3,-4.1 -2.8,-4.1m-87.2,0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.8Z" fill="#59cbe8"/><path d="M145.3,14.5l-0.7,0l-0.5,-1.1c-0.1,-0.1 -0.1,-0.1 -0.2,-0.1l-0.6,0l0,1.2l-0.6,0l0,-3.1l1.2,0c0.7,0 1.3,0.2 1.3,1c0,0.4 -0.2,0.7 -0.5,0.8c0.2,0.4 0.5,1.2 0.6,1.3Zm-2,-2.6l0,0.8l0.6,0c0.3,0 0.6,-0.1 0.6,-0.4c0,-0.4 -0.2,-0.5 -0.6,-0.5c-0.3,0.1 -0.5,0.1 -0.6,0.1Zm-2.6,1c0,-1.7 1.4,-3 3.1,-3c1.7,0 3.1,1.3 3.1,3c0,1.6 -1.4,3 -3.1,3c-1.7,0 -3.1,-1.4 -3.1,-3Zm0.6,0c0,1.3 1.1,2.4 2.6,2.4c1.4,0 2.6,-1.1 2.6,-2.4c0,-1.3 -1.1,-2.4 -2.6,-2.4c-1.5,0 -2.6,1.1 -2.6,2.4Z" fill="#404040"/><path id="Fill-1" d="M83.7,24.1l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-3.1,-3.5c0,0.4 0.4,0.5 1.1,0.4l-0.1,2.9c-1.6,0.1 -3.9,0 -4.3,-1.3l0,-0.2c-1.3,1 -2.8,1.6 -4.5,1.6c-2.6,0 -4.4,-1.5 -4.4,-4.1c0,-4.5 5.1,-4.9 8.5,-4.9l0,-0.6c0,-1.3 -0.6,-1.7 -2,-1.7c-1.8,0 -3.5,0.6 -5,1.4l-1.2,-2.6c2.1,-1.1 4.1,-1.6 6.5,-1.6c3.9,0 5.4,1.6 5.4,5.5l0,5.2Zm-3.7,-0.1l-0.1,0l0,-3.1c-1.7,0 -4.8,0 -4.8,2.4c0,1.1 0.7,1.8 1.8,1.8c1.2,0 2.2,-0.5 3.1,-1.1Zm-11,0.4c-1.9,0 -2.1,-0.2 -2.1,-1.4l0,-6.3l3.1,0l0,-3.1l-3.1,0l0,-3.6l-3.7,0l0,3.6l-2.2,0l0,3.1l2.1,0l0,6.5c0,3.3 0.9,4.3 4.6,4.3c0.7,0 1.3,-0.1 2.3,-0.2l0,-3.1c-0.3,0.2 -0.5,0.2 -1,0.2m-16.2,3.2c-4.7,0 -7,-2.9 -7,-7.1c0,-4 2,-7.1 7,-7.1c4.6,0 7,2.7 7,7.1c0,4.2 -2.2,7.1 -7,7.1Zm0.1,-11c-2.4,0 -3.1,1.4 -3.1,4.1c0,2.7 0.8,4.2 3.2,4.2c2.3,0 3.1,-1.5 3.1,-4.2c0,-2.7 -0.8,-4.1 -3.2,-4.1Zm-19,-7.4l0,3.4l5.1,0l0,15l4,0l0,-15l5.1,0l0,-3.4l-14.2,0Z" fill="#22223e"/><path id="Fill-15" d="M7.9,25.5c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#f04e98"/><path id="Fill-14" d="M7.9,15c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.6,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#8246af"/></svg><svg class="h-8 w-auto mb-4 hidden dark:block" width="147" height="31" viewBox="0 0 147 31" preserveAspectRatio="xMidYMid meet" style="aspect-ratio:147/31" xmlns="http://www.w3.org/2000/svg"><path id="Fill-6" d="M132.8,24.5c-1.8,4.6 -2.7,5.6 -6,5.6c-0.5,0 -1.1,0 -2.1,-0.1l0,-3.2c0.2,0 0.7,0.1 1.5,0.1c1.5,0 1.8,-0.4 2.3,-1.6l0.6,-1.6l-5.3,-13.4l4.2,0l3.2,9.5l0.1,0l3.1,-9.5l4.1,0l-5.7,14.2Zm-114.9,-6.2c-0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#e4002b"/><path id="Fill-7" d="M119.3,20.5c-0.9,0.6 -1.9,1.1 -3.1,1.1c-1.1,0 -1.8,-0.7 -1.8,-1.8c0,-2.4 3.1,-2.4 4.8,-2.4l0,3.1l0.1,0Zm3.8,0.1l0,-5.2c0,-3.9 -1.5,-5.5 -5.4,-5.5c-2.4,0 -4.4,0.5 -6.5,1.6l1.2,2.6c1.5,-0.8 3.2,-1.4 5,-1.4c1.4,0 2,0.4 2,1.7l0,0.6c-3.4,0 -8.5,0.4 -8.5,4.9c0,2.6 1.8,4.1 4.4,4.1c1.7,0 3.2,-0.6 4.5,-1.6l0,0.2c0.4,1.3 2.7,1.4 4.3,1.3l0.1,-2.9c-0.7,0.1 -1.1,0 -1.1,-0.4Zm-115.2,-15.5c0.5,-0.3 0.5,-0.8 -0,-1.1l-6.9,-3.9c-0.6,-0.3 -1,-0 -1,0.6l0,7.7c0,0.6 0.4,0.8 1,0.6l6.9,-3.9Z" fill="#ffbf3f"/><path id="Fill-3" d="M105.1,24.1l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-96.3,-0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#dbe442"/><path id="Fill-5" d="M96.9,24.2c-1.6,0 -2.5,-0.4 -3.4,-1.7l-0.1,0l0,6.9l-3.8,0l0,-19.2l3.2,0l0.2,1.6l0.1,0c1,-1.4 2.2,-1.9 3.8,-1.9c4.1,0 5.8,3.3 5.8,7c0.1,3.9 -1.5,7.3 -5.8,7.3m-0.9,-11.1c-1.6,0 -2.6,0.6 -2.6,2.4l0,3c0,1.9 0.6,3.1 2.6,3.1c2.5,0 2.8,-2.3 2.8,-4.4c0,-2.2 -0.3,-4.1 -2.8,-4.1m-87.2,0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.8Z" fill="#59cbe8"/><path id="Fill-1" d="M143.3,11.9l0,0.8l0.6,0c0.3,0 0.6,-0.1 0.6,-0.4c0,-0.4 -0.2,-0.5 -0.6,-0.5c-0.3,0.1 -0.5,0.1 -0.6,0.1m2,2.6l-0.7,0l-0.5,-1.1c-0.1,-0.1 -0.1,-0.1 -0.2,-0.1l-0.6,0l0,1.2l-0.6,0l0,-3.1l1.2,0c0.7,0 1.3,0.2 1.3,1c0,0.4 -0.2,0.7 -0.5,0.8c0.2,0.4 0.5,1.2 0.6,1.3m-4,-1.6c0,1.3 1.1,2.4 2.6,2.4c1.4,0 2.6,-1.1 2.6,-2.4c0,-1.3 -1.1,-2.4 -2.6,-2.4c-1.5,0 -2.6,1.1 -2.6,2.4m-0.6,0c0,-1.7 1.4,-3 3.1,-3c1.7,0 3.1,1.3 3.1,3c0,1.6 -1.4,3 -3.1,3c-1.7,0 -3.1,-1.4 -3.1,-3m-57,11.2l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-6.8,-3.6c-0.9,0.6 -1.9,1.1 -3.1,1.1c-1.1,0 -1.8,-0.7 -1.8,-1.8c0,-2.4 3.1,-2.4 4.8,-2.4l0,3.1l0.1,0Zm3.7,0.1l0,-5.2c0,-3.9 -1.5,-5.5 -5.4,-5.5c-2.4,0 -4.4,0.5 -6.5,1.6l1.2,2.6c1.5,-0.8 3.2,-1.4 5,-1.4c1.4,0 2,0.4 2,1.7l0,0.6c-3.4,0 -8.5,0.4 -8.5,4.9c0,2.6 1.8,4.1 4.4,4.1c1.7,0 3.2,-0.6 4.5,-1.6l0,0.2c0.4,1.3 2.7,1.4 4.3,1.3l0.1,-2.9c-0.7,0.1 -1.1,0 -1.1,-0.4Zm-14.7,0.3c-1.9,0 -2.1,-0.2 -2.1,-1.4l0,-6.3l3.1,0l0,-3.1l-3.1,0l0,-3.6l-3.7,0l0,3.6l-2.2,0l0,3.1l2.1,0l0,6.5c0,3.3 0.9,4.3 4.6,4.3c0.7,0 1.3,-0.1 2.3,-0.2l0,-3.1c-0.3,0.2 -0.5,0.2 -1,0.2m-16.2,3.2c-4.7,0 -7,-2.9 -7,-7.1c0,-4 2,-7.1 7,-7.1c4.6,0 7,2.7 7,7.1c0,4.2 -2.2,7.1 -7,7.1m0.1,-11c-2.4,0 -3.1,1.4 -3.1,4.1c0,2.7 0.8,4.2 3.2,4.2c2.3,0 3.1,-1.5 3.1,-4.2c0,-2.7 -0.8,-4.1 -3.2,-4.1m-19,-7.4l0,3.4l5.1,0l0,15l4,0l0,-15l5.1,0l0,-3.4l-14.2,0Z" fill="#fff"/><path id="Fill-15" d="M7.9,25.5c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#f04e98"/><path id="Fill-14" d="M7.9,15c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.6,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#8246af"/></svg>
-<p class="font-body-sm text-body-sm text-ink-soft max-w-xs" data-i18n="footer_copyright">© 2026 Totalplay Telecomunicaciones, S.A.P.I. de C.V. Todos los derechos reservados.</p>
+<a href="https://www.totalplay.com.mx" target="_blank" rel="noopener" aria-label="Página oficial de Totalplay" class="inline-block mb-4">
+<svg class="h-8 w-auto block dark:hidden" width="147" height="31" viewBox="0 0 147 31" preserveAspectRatio="xMidYMid meet" style="aspect-ratio:147/31" xmlns="http://www.w3.org/2000/svg"><path id="Fill-6" d="M132.8,24.5c-1.8,4.6 -2.7,5.6 -6,5.6c-0.5,0 -1.1,0 -2.1,-0.1l0,-3.2c0.2,0 0.7,0.1 1.5,0.1c1.5,0 1.8,-0.4 2.3,-1.6l0.6,-1.6l-5.3,-13.4l4.2,0l3.2,9.5l0.1,0l3.1,-9.5l4.1,0l-5.7,14.2Zm-114.9,-6.2c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#e4002b"/><path id="Fill-7" d="M119.3,20.5c-0.9,0.6 -1.9,1.1 -3.1,1.1c-1.1,0 -1.8,-0.7 -1.8,-1.8c0,-2.4 3.1,-2.4 4.8,-2.4l0,3.1l0.1,0Zm3.8,0.1l0,-5.2c0,-3.9 -1.5,-5.5 -5.4,-5.5c-2.4,0 -4.4,0.5 -6.5,1.6l1.2,2.6c1.5,-0.8 3.2,-1.4 5,-1.4c1.4,0 2,0.4 2,1.7l0,0.6c-3.4,0 -8.5,0.4 -8.5,4.9c0,2.6 1.8,4.1 4.4,4.1c1.7,0 3.2,-0.6 4.5,-1.6l0,0.2c0.4,1.3 2.7,1.4 4.3,1.3l0.1,-2.9c-0.7,0.1 -1.1,0 -1.1,-0.4Zm-115.2,-15.5c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.6,-0.3 -1,0 -1,0.6l0,7.7c0,0.6 0.4,0.8 1,0.6l6.9,-3.9Z" fill="#ffbf3f"/><path id="Fill-3" d="M105.1,24.1l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-96.3,-0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#dbe442"/><path id="Fill-5" d="M96.9,24.2c-1.6,0 -2.5,-0.4 -3.4,-1.7l-0.1,0l0,6.9l-3.8,0l0,-19.2l3.2,0l0.2,1.6l0.1,0c1,-1.4 2.2,-1.9 3.8,-1.9c4.1,0 5.8,3.3 5.8,7c0.1,3.9 -1.5,7.3 -5.8,7.3m-0.9,-11.1c-1.6,0 -2.6,0.6 -2.6,2.4l0,3c0,1.9 0.6,3.1 2.6,3.1c2.5,0 2.8,-2.3 2.8,-4.4c0,-2.2 -0.3,-4.1 -2.8,-4.1m-87.2,0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.8Z" fill="#59cbe8"/><path d="M145.3,14.5l-0.7,0l-0.5,-1.1c-0.1,-0.1 -0.1,-0.1 -0.2,-0.1l-0.6,0l0,1.2l-0.6,0l0,-3.1l1.2,0c0.7,0 1.3,0.2 1.3,1c0,0.4 -0.2,0.7 -0.5,0.8c0.2,0.4 0.5,1.2 0.6,1.3Zm-2,-2.6l0,0.8l0.6,0c0.3,0 0.6,-0.1 0.6,-0.4c0,-0.4 -0.2,-0.5 -0.6,-0.5c-0.3,0.1 -0.5,0.1 -0.6,0.1Zm-2.6,1c0,-1.7 1.4,-3 3.1,-3c1.7,0 3.1,1.3 3.1,3c0,1.6 -1.4,3 -3.1,3c-1.7,0 -3.1,-1.4 -3.1,-3Zm0.6,0c0,1.3 1.1,2.4 2.6,2.4c1.4,0 2.6,-1.1 2.6,-2.4c0,-1.3 -1.1,-2.4 -2.6,-2.4c-1.5,0 -2.6,1.1 -2.6,2.4Z" fill="#404040"/><path id="Fill-1" d="M83.7,24.1l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-3.1,-3.5c0,0.4 0.4,0.5 1.1,0.4l-0.1,2.9c-1.6,0.1 -3.9,0 -4.3,-1.3l0,-0.2c-1.3,1 -2.8,1.6 -4.5,1.6c-2.6,0 -4.4,-1.5 -4.4,-4.1c0,-4.5 5.1,-4.9 8.5,-4.9l0,-0.6c0,-1.3 -0.6,-1.7 -2,-1.7c-1.8,0 -3.5,0.6 -5,1.4l-1.2,-2.6c2.1,-1.1 4.1,-1.6 6.5,-1.6c3.9,0 5.4,1.6 5.4,5.5l0,5.2Zm-3.7,-0.1l-0.1,0l0,-3.1c-1.7,0 -4.8,0 -4.8,2.4c0,1.1 0.7,1.8 1.8,1.8c1.2,0 2.2,-0.5 3.1,-1.1Zm-11,0.4c-1.9,0 -2.1,-0.2 -2.1,-1.4l0,-6.3l3.1,0l0,-3.1l-3.1,0l0,-3.6l-3.7,0l0,3.6l-2.2,0l0,3.1l2.1,0l0,6.5c0,3.3 0.9,4.3 4.6,4.3c0.7,0 1.3,-0.1 2.3,-0.2l0,-3.1c-0.3,0.2 -0.5,0.2 -1,0.2m-16.2,3.2c-4.7,0 -7,-2.9 -7,-7.1c0,-4 2,-7.1 7,-7.1c4.6,0 7,2.7 7,7.1c0,4.2 -2.2,7.1 -7,7.1Zm0.1,-11c-2.4,0 -3.1,1.4 -3.1,4.1c0,2.7 0.8,4.2 3.2,4.2c2.3,0 3.1,-1.5 3.1,-4.2c0,-2.7 -0.8,-4.1 -3.2,-4.1Zm-19,-7.4l0,3.4l5.1,0l0,15l4,0l0,-15l5.1,0l0,-3.4l-14.2,0Z" fill="#22223e"/><path id="Fill-15" d="M7.9,25.5c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#f04e98"/><path id="Fill-14" d="M7.9,15c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.6,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#8246af"/></svg><svg class="h-8 w-auto hidden dark:block" width="147" height="31" viewBox="0 0 147 31" preserveAspectRatio="xMidYMid meet" style="aspect-ratio:147/31" xmlns="http://www.w3.org/2000/svg"><path id="Fill-6" d="M132.8,24.5c-1.8,4.6 -2.7,5.6 -6,5.6c-0.5,0 -1.1,0 -2.1,-0.1l0,-3.2c0.2,0 0.7,0.1 1.5,0.1c1.5,0 1.8,-0.4 2.3,-1.6l0.6,-1.6l-5.3,-13.4l4.2,0l3.2,9.5l0.1,0l3.1,-9.5l4.1,0l-5.7,14.2Zm-114.9,-6.2c-0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#e4002b"/><path id="Fill-7" d="M119.3,20.5c-0.9,0.6 -1.9,1.1 -3.1,1.1c-1.1,0 -1.8,-0.7 -1.8,-1.8c0,-2.4 3.1,-2.4 4.8,-2.4l0,3.1l0.1,0Zm3.8,0.1l0,-5.2c0,-3.9 -1.5,-5.5 -5.4,-5.5c-2.4,0 -4.4,0.5 -6.5,1.6l1.2,2.6c1.5,-0.8 3.2,-1.4 5,-1.4c1.4,0 2,0.4 2,1.7l0,0.6c-3.4,0 -8.5,0.4 -8.5,4.9c0,2.6 1.8,4.1 4.4,4.1c1.7,0 3.2,-0.6 4.5,-1.6l0,0.2c0.4,1.3 2.7,1.4 4.3,1.3l0.1,-2.9c-0.7,0.1 -1.1,0 -1.1,-0.4Zm-115.2,-15.5c0.5,-0.3 0.5,-0.8 -0,-1.1l-6.9,-3.9c-0.6,-0.3 -1,-0 -1,0.6l0,7.7c0,0.6 0.4,0.8 1,0.6l6.9,-3.9Z" fill="#ffbf3f"/><path id="Fill-3" d="M105.1,24.1l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-96.3,-0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.9c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.9Z" fill="#dbe442"/><path id="Fill-5" d="M96.9,24.2c-1.6,0 -2.5,-0.4 -3.4,-1.7l-0.1,0l0,6.9l-3.8,0l0,-19.2l3.2,0l0.2,1.6l0.1,0c1,-1.4 2.2,-1.9 3.8,-1.9c4.1,0 5.8,3.3 5.8,7c0.1,3.9 -1.5,7.3 -5.8,7.3m-0.9,-11.1c-1.6,0 -2.6,0.6 -2.6,2.4l0,3c0,1.9 0.6,3.1 2.6,3.1c2.5,0 2.8,-2.3 2.8,-4.4c0,-2.2 -0.3,-4.1 -2.8,-4.1m-87.2,0.4c0,0.6 0.4,0.8 1,0.5l6.9,-3.9c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.8Z" fill="#59cbe8"/><path id="Fill-1" d="M143.3,11.9l0,0.8l0.6,0c0.3,0 0.6,-0.1 0.6,-0.4c0,-0.4 -0.2,-0.5 -0.6,-0.5c-0.3,0.1 -0.5,0.1 -0.6,0.1m2,2.6l-0.7,0l-0.5,-1.1c-0.1,-0.1 -0.1,-0.1 -0.2,-0.1l-0.6,0l0,1.2l-0.6,0l0,-3.1l1.2,0c0.7,0 1.3,0.2 1.3,1c0,0.4 -0.2,0.7 -0.5,0.8c0.2,0.4 0.5,1.2 0.6,1.3m-4,-1.6c0,1.3 1.1,2.4 2.6,2.4c1.4,0 2.6,-1.1 2.6,-2.4c0,-1.3 -1.1,-2.4 -2.6,-2.4c-1.5,0 -2.6,1.1 -2.6,2.4m-0.6,0c0,-1.7 1.4,-3 3.1,-3c1.7,0 3.1,1.3 3.1,3c0,1.6 -1.4,3 -3.1,3c-1.7,0 -3.1,-1.4 -3.1,-3m-57,11.2l3.7,0l0,-19.6l-3.7,0l0,19.6Zm-6.8,-3.6c-0.9,0.6 -1.9,1.1 -3.1,1.1c-1.1,0 -1.8,-0.7 -1.8,-1.8c0,-2.4 3.1,-2.4 4.8,-2.4l0,3.1l0.1,0Zm3.7,0.1l0,-5.2c0,-3.9 -1.5,-5.5 -5.4,-5.5c-2.4,0 -4.4,0.5 -6.5,1.6l1.2,2.6c1.5,-0.8 3.2,-1.4 5,-1.4c1.4,0 2,0.4 2,1.7l0,0.6c-3.4,0 -8.5,0.4 -8.5,4.9c0,2.6 1.8,4.1 4.4,4.1c1.7,0 3.2,-0.6 4.5,-1.6l0,0.2c0.4,1.3 2.7,1.4 4.3,1.3l0.1,-2.9c-0.7,0.1 -1.1,0 -1.1,-0.4Zm-14.7,0.3c-1.9,0 -2.1,-0.2 -2.1,-1.4l0,-6.3l3.1,0l0,-3.1l-3.1,0l0,-3.6l-3.7,0l0,3.6l-2.2,0l0,3.1l2.1,0l0,6.5c0,3.3 0.9,4.3 4.6,4.3c0.7,0 1.3,-0.1 2.3,-0.2l0,-3.1c-0.3,0.2 -0.5,0.2 -1,0.2m-16.2,3.2c-4.7,0 -7,-2.9 -7,-7.1c0,-4 2,-7.1 7,-7.1c4.6,0 7,2.7 7,7.1c0,4.2 -2.2,7.1 -7,7.1m0.1,-11c-2.4,0 -3.1,1.4 -3.1,4.1c0,2.7 0.8,4.2 3.2,4.2c2.3,0 3.1,-1.5 3.1,-4.2c0,-2.7 -0.8,-4.1 -3.2,-4.1m-19,-7.4l0,3.4l5.1,0l0,15l4,0l0,-15l5.1,0l0,-3.4l-14.2,0Z" fill="#fff"/><path id="Fill-15" d="M7.9,25.5c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.5,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#f04e98"/><path id="Fill-14" d="M7.9,15c0.5,-0.3 0.5,-0.8 0,-1.1l-6.9,-3.8c-0.6,-0.3 -1,-0.1 -1,0.5l0,7.7c0,0.6 0.4,0.8 1,0.5l6.9,-3.8Z" fill="#8246af"/></svg>
+</a>
+<p class="font-body-sm text-body-sm text-ink-soft max-w-xs" data-i18n="footer_copyright">Este sitio pertenece a un asesor de ventas autorizado. Este sitio no es, ni pretende hacerse pasar por la página oficial de Totalplay; las marcas y logotipos utilizados pertenecen a sus respectivos titulares.</p>
 </div>
 <div class="col-span-1 lg:col-span-2 flex flex-col gap-4">
 <p class="font-label text-label text-ink-soft" data-i18n="footer_precios">Todos los precios están expresados en MXN y corresponden a la modalidad de pronto pago.</p>
@@ -532,7 +538,7 @@ const I18N = {
     cobertura_negativa: 'Por ahora no llegamos a "{zona}", pero queremos avisarte en cuanto lo hagamos.',
     sugerencia_sm_prefix: "Supermanzana / Región ",
     step3_title: "¿Quieres agregar TV?",
-    step3_subtitle: "Con esto armamos tu cotización: solo Internet, o Internet + TV Totalplay.",
+    step3_subtitle: "Con esto armamos tu cotización: solo Internet, o Internet + Totalplay TV.",
     step3_opt1_title: "Solo Internet", step3_opt1_sub: "Fibra óptica simétrica",
     step3_opt2_title: "Internet + TV", step3_opt2_sub: "+190 canales y Anytime",
     btn_continuar: "Continuar",
@@ -553,9 +559,9 @@ const I18N = {
     results_sub_maximo: "Velocidad de sobra para todo lo que tu hogar necesita.",
     results_sub_sinlimite: "A esta velocidad tu internet no será una limitante en tu día a día.",
     results_disclaimer: "(Esta demostración se genera con los datos que tú mismo ingresaste; es una simulación ilustrativa. Precios de referencia sujetos a la promoción vigente y a la disponibilidad en tu zona.)",
-    encuadre_tv: "Tu cotización con Internet + TV Totalplay",
+    encuadre_tv: "Tu cotización con Internet + Totalplay TV",
     encuadre_internet: "Tu cotización de Solo Internet",
-    eyebrow_tv: "Internet + TV Totalplay", eyebrow_internet: "Solo Internet Totalplay",
+    eyebrow_tv: "Internet + Totalplay TV", eyebrow_internet: "Solo Internet Totalplay",
     h3_tv: "Internet + TV", h3_internet: "Solo Internet",
     precio_final_label: "Precio final", sin_cargos: "Sin cargos ocultos",
     fibra_dedicada: "Fibra óptica simétrica dedicada, con instalación incluida",
@@ -570,7 +576,7 @@ const I18N = {
     placeholder_nombre_completo: "Nombre completo",
     btn_enviar_whatsapp: "Enviar por WhatsApp",
     alert_completa_datos: "Por favor completa tu nombre y teléfono para que podamos contactarte.",
-    footer_copyright: "© 2026 Totalplay Telecomunicaciones, S.A.P.I. de C.V. Todos los derechos reservados.",
+    footer_copyright: "Este sitio pertenece a un asesor de ventas autorizado. Este sitio no es, ni pretende hacerse pasar por la página oficial de Totalplay; las marcas y logotipos utilizados pertenecen a sus respectivos titulares.",
     footer_privacidad: "Aviso de Privacidad", footer_terminos: "Términos y Condiciones",
     footer_aviso_asesor: "Aviso de Privacidad del asesor", lead_aviso_pre: "Al continuar aceptas nuestro", lead_aviso_link: "Aviso de Privacidad",
     footer_precios: "Todos los precios están expresados en MXN y corresponden a la modalidad de pronto pago.",
@@ -667,7 +673,7 @@ const I18N = {
     placeholder_nombre_completo: "Full name",
     btn_enviar_whatsapp: "Send via WhatsApp",
     alert_completa_datos: "Please fill in your name and phone number so we can contact you.",
-    footer_copyright: "© 2026 Totalplay Telecomunicaciones, S.A.P.I. de C.V. All rights reserved.",
+    footer_copyright: "This site belongs to an authorized sales advisor. This site is not, and does not claim to be, Totalplay's official website; the brands and logos used belong to their respective owners.",
     footer_privacidad: "Privacy Notice", footer_terminos: "Terms and Conditions",
     footer_aviso_asesor: "Advisor Privacy Notice", lead_aviso_pre: "By continuing you accept our", lead_aviso_link: "Privacy Notice",
     footer_precios: "All prices are in MXN and correspond to the early-payment (pronto pago) plan.",
@@ -859,13 +865,48 @@ Object.keys(CLUSTERS_COBERTURA).forEach(function(zona){
 // Nota: los nombres de cluster (Donceles, Torre Molinos, Chemuyil, Nuevo
 // Calakmul, Kabah) son uso interno/administrativo de Totalplay y NO se
 // exponen al cliente como colonia — por eso no aparecen en esta lista.
+// Nombres de colonia con los que la gente conoce algunas regiones /
+// supermanzanas con cobertura (p. ej. "Tierra Maya" = Región 105).
+// Solo se toman en cuenta si el número está en COBERTURA_SM.
+const ALIAS_SM = {
+  55:  ["Porto Bello"],
+  56:  ["Sol del Mayab"],
+  57:  ["Las Américas"],
+  95:  ["Arboledas"],
+  105: ["Tierra Maya"],
+  227: ["Villas Otoch"],
+  500: ["Arboledas"],
+  506: ["El Pedregal"],
+  504: ["Chemuyil"],
+  507: ["Ek Balam"],
+  513: ["Bosques San Miguel"],
+  514: ["Paseos del Caribe"],
+  517: ["Barrio Maya"],
+  520: ["Villas del Caribe"],
+  524: ["Santa Fe"]
+};
+
+// Si el texto es el nombre de una colonia de ALIAS_SM con cobertura,
+// devuelve { sm, nombre }; si no, null.
+function buscaAliasSM(texto){
+  const t = normaliza(texto).replace(/[,.]/g, ' ').replace(/\s+/g, ' ').trim();
+  for(const sm of Object.keys(ALIAS_SM)){
+    if(!COBERTURA_SM.includes(parseInt(sm, 10))) continue;
+    for(const nombre of ALIAS_SM[sm]){
+      if(normaliza(nombre) === t) return { sm: sm, nombre: nombre };
+    }
+  }
+  return null;
+}
+
 const COBERTURA_COLONIAS = [
   "4A",
   "PASEOS KABAH",
   "VILLAS OTOCH",
   "FRACC LA SELVA",
   "LA SELVA",
-  "LOS HEROES"
+  "LOS HEROES",
+  "DONCELES"
 ];
 
 // ============ ESTADO ============
@@ -963,7 +1004,13 @@ function verificarCobertura(){
   const loc = (!esNumero) ? buscaLocalidad(valor) : null;
   if(loc) cubierto = true;
 
-  estado.zona = loc ? loc.etiqueta : valor;
+  // Colonias conocidas por nombre (p. ej. "Tierra Maya" = Región 105).
+  const aliasSM = (!esNumero && !loc) ? buscaAliasSM(valor) : null;
+  if(aliasSM) cubierto = true;
+
+  estado.zona = loc ? loc.etiqueta
+              : aliasSM ? aliasSM.nombre + ' (' + aliasSM.sm + ')'
+              : valor;
   estado.conCobertura = cubierto;
   msg.classList.remove('hidden');
 
@@ -1206,7 +1253,7 @@ function tarjetaPlan(){
   const beneficios = beneficiosPara(tipo, plan.mb);
   const listaHTML = beneficios.map(b =>
     '<li class="flex items-center gap-3">' +
-    '<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>' +
+    '<span class="material-symbols-outlined text-sm" style="color:var(--acento-texto);">check_circle</span>' +
     '<span class="font-body-sm text-body-sm text-on-surface-variant">' + b + '</span></li>'
   ).join('');
 
@@ -1239,11 +1286,11 @@ function tarjetaPlan(){
   }
 
   return '<div class="surface-card rounded-xl p-8 card-result flex flex-col z-10 relative">' +
-    '<div class="font-eyebrow text-eyebrow text-signal-deep mb-2 uppercase">' +
+    '<div class="font-eyebrow text-eyebrow mb-2 uppercase" style="color:var(--speed);">' +
       (esTV ? T('eyebrow_tv') : T('eyebrow_internet')) + '</div>' +
     '<h3 class="font-hero-title-mobile text-hero-title-mobile mb-1 text-2xl">' +
       (esTV ? T('h3_tv') : T('h3_internet')) + '</h3>' +
-    '<div class="font-result-speed text-result-speed text-signal-deep mb-2 leading-none text-6xl">' + plan.label +
+    '<div class="font-result-speed text-result-speed mb-2 leading-none text-6xl" style="color:var(--speed);">' + plan.label +
       (plan.mb >= 1000 ? '' : '<span class="text-3xl ml-1 text-ink-soft">MB</span>') + '</div>' +
     '<p class="font-label text-label text-ink-soft mb-4">' + encuadre + '</p>' +
     '<ul class="space-y-3 mb-8 flex-grow">' + listaHTML + '</ul>' +
@@ -1340,7 +1387,8 @@ function enviarWhatsapp(){
   // Todo lo que escribe el cliente se codifica: una dirección con # o &
   // rompería la URL y el mensaje llegaría cortado.
   let mensaje = T('wa_contratar_intro') + '%0A%0A' +
-    '*' + T('wa_campo_plan') + ':* ' + encodeURIComponent(nombrePaquete + ' ' + plan.label + ' MB') + '%0A' +
+    // Código interno: 2P = Solo Internet, 3P = Internet + TV, seguido de los megas.
+    '*' + T('wa_campo_plan') + ':* ' + encodeURIComponent((esTV ? '3P' : '2P') + '-' + plan.mb) + '%0A' +
     '*' + T('wa_campo_precio') + ':* ' + encodeURIComponent(pesos(plan.precio) + T('mes_suffix')) + '%0A' +
     '*' + T('wa_campo_nombre') + ':* ' + encodeURIComponent(nombre) + '%0A' +
     '*' + T('wa_campo_telefono') + ':* ' + encodeURIComponent(tel) + '%0A' +
@@ -1378,16 +1426,29 @@ function sugerenciasPara(query){
       if(sm.indexOf(prefijo) === 0){
         // valor = el mismo número (no el cluster interno), para que al
         // elegir la sugerencia el campo quede listo para verificarCobertura().
-        resultados.push({ valor: sm, texto: T('sugerencia_sm_prefix') + sm });
+        const nombres = ALIAS_SM[sm] ? ' · ' + ALIAS_SM[sm].join(' / ') : '';
+        resultados.push({ valor: sm, texto: T('sugerencia_sm_prefix') + sm + nombres });
       }
     });
   }
 
+  const nombresAlias = [].concat(...Object.values(ALIAS_SM)).map(normaliza);
   COBERTURA_COLONIAS.forEach(function(c){
+    if(nombresAlias.includes(normaliza(c))) return; // ya sale con su número
     if(normaliza(c).indexOf(qNorm) !== -1){
       const titulo = c.toLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase(); });
       resultados.push({ valor: c, texto: titulo });
     }
+  });
+
+  Object.keys(ALIAS_SM).forEach(function(sm){
+    if(!COBERTURA_SM.includes(parseInt(sm, 10))) return;
+    ALIAS_SM[sm].forEach(function(nombre){
+      if(normaliza(nombre).indexOf(qNorm) !== -1){
+        // valor = el número, así verificarCobertura() lo valida directo.
+        resultados.push({ valor: sm, texto: nombre + ' · ' + T('sugerencia_sm_prefix') + sm });
+      }
+    });
   });
 
   COBERTURA_LOCALIDADES.forEach(function(loc){
