@@ -119,7 +119,7 @@ tailwind.config = {
         --surface-lowest:#F8F9FB;
         --signal:#F04E98;
         --signal-glow: rgba(240,78,152,0.28);
-        --signal-deep:#22223E;
+        --signal-deep:#8246AF;
         --speed:#8246AF;
         --acento-texto:#E4002B;
         --secondary:#5C8A21;
@@ -353,8 +353,8 @@ tailwind.config = {
 <div class="hidden mb-6" id="sin-cobertura-form">
 <p class="font-body-sm text-body-sm text-ink-soft mb-4" data-i18n="sin_cobertura_texto">Déjanos tus datos y te avisamos en cuanto lleguemos a tu zona.</p>
 <div class="space-y-3">
-<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal outline-none" id="sc-nombre" data-i18n-placeholder="placeholder_nombre" placeholder="Nombre" type="text">
-<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal outline-none" id="sc-tel" data-i18n-placeholder="placeholder_tel" placeholder="Teléfono / WhatsApp" type="tel">
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal outline-none" id="sc-nombre" data-i18n-placeholder="placeholder_nombre_opcional" placeholder="Nombre (opcional)" type="text">
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal outline-none" id="sc-tel" data-i18n-placeholder="placeholder_tel_opcional" placeholder="Teléfono (opcional)" type="tel">
 <button class="btn-secondary w-full rounded-lg py-3 font-body-lg text-body-lg" data-i18n="btn_avisar" onclick="avisarCobertura()">Avísenme cuando llegue</button>
 </div>
 </div>
@@ -439,10 +439,10 @@ tailwind.config = {
 <div class="font-body-sm text-body-sm text-ink text-center mb-8 bg-surface-container-high py-3 px-4 rounded-lg hidden" id="lead-summary"></div>
 <div class="space-y-4">
 <div>
-<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal focus:ring-1 focus:ring-signal outline-none" id="lead-nombre" data-i18n-placeholder="placeholder_nombre_completo" placeholder="Nombre completo" type="text">
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal focus:ring-1 focus:ring-signal outline-none" id="lead-nombre" data-i18n-placeholder="placeholder_nombre_opcional" placeholder="Nombre (opcional)" type="text">
 </div>
 <div>
-<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal focus:ring-1 focus:ring-signal outline-none" id="lead-tel" data-i18n-placeholder="placeholder_tel" placeholder="Teléfono / WhatsApp" type="tel">
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-3 px-4 text-ink focus:border-signal focus:ring-1 focus:ring-signal outline-none" id="lead-tel" data-i18n-placeholder="placeholder_tel_opcional" placeholder="Teléfono (opcional)" type="tel">
 </div>
 <p class="font-label text-label text-ink-soft text-center mt-4"><span data-i18n="lead_aviso_pre">Al continuar aceptas nuestro</span> <button type="button" class="underline text-signal" data-i18n="lead_aviso_link" onclick="abrirAviso()">Aviso de Privacidad</button>.</p>
 <button class="btn-primary w-full rounded-lg py-3 font-body-lg text-body-lg flex justify-center items-center gap-2 mt-2" onclick="enviarWhatsapp()" type="button">
@@ -464,10 +464,9 @@ tailwind.config = {
 <p class="font-body-sm text-body-sm text-ink-soft max-w-xs" data-i18n="footer_copyright">Este sitio pertenece a un asesor de ventas autorizado. Este sitio no es, ni pretende hacerse pasar por la página oficial de Totalplay; las marcas y logotipos utilizados pertenecen a sus respectivos titulares.</p>
 </div>
 <div class="col-span-1 lg:col-span-2 flex flex-col gap-4">
-<p class="font-label text-label text-ink-soft" data-i18n="footer_precios">Todos los precios están expresados en MXN y corresponden a la modalidad de pronto pago.</p>
 <div class="flex flex-col md:flex-row gap-4 md:gap-8">
 <button type="button" class="font-body-sm text-body-sm text-ink-soft hover:text-ink transition-colors text-left" data-i18n="footer_aviso_asesor" onclick="abrirAviso()">Aviso de Privacidad del asesor</button>
-<a class="font-body-sm text-body-sm text-ink-soft hover:text-ink transition-colors" data-i18n="footer_privacidad" href="https://www.totalplay.com.mx/avisodeprivacidad" target="_blank" rel="noopener">Aviso de Privacidad</a>
+<a class="font-body-sm text-body-sm text-ink-soft hover:text-ink transition-colors" data-i18n="footer_privacidad" href="https://www.totalplay.com.mx/avisodeprivacidad" target="_blank" rel="noopener">Aviso de Privacidad de Totalplay</a>
 <a class="font-body-sm text-body-sm text-ink-soft hover:text-ink transition-colors" data-i18n="footer_terminos" href="https://www.totalplay.com.mx/terms" target="_blank" rel="noopener">Términos y Condiciones</a>
 <a class="font-body-sm text-body-sm text-ink-soft hover:text-ink transition-colors" href="https://www.totalplay.com.mx/archivos/pdf/ift.pdf" target="_blank" rel="noopener">IFT</a>
 </div>
@@ -563,7 +562,7 @@ const I18N = {
     encuadre_internet: "Tu cotización de Solo Internet",
     eyebrow_tv: "Internet + Totalplay TV", eyebrow_internet: "Solo Internet Totalplay",
     h3_tv: "Internet + TV", h3_internet: "Solo Internet",
-    precio_final_label: "Precio final", sin_cargos: "Sin cargos ocultos",
+    precio_final_label: "Pronto pago", sin_cargos: "Sin cargos ocultos",
     fibra_dedicada: "Fibra óptica simétrica dedicada, con instalación incluida",
     mes_suffix: "/mes",
     nota_sube: "Con {monto} más al mes {a}subes a {mb}{/a}.",
@@ -574,12 +573,12 @@ const I18N = {
     lead_subtitle: "Estás a un paso de disfrutar la mejor conexión. Déjanos tus datos para agendar tu instalación.",
     lead_resumen_prefix: "Has seleccionado: ",
     placeholder_nombre_completo: "Nombre completo",
+    placeholder_nombre_opcional: "Nombre (opcional)", placeholder_tel_opcional: "Teléfono (opcional)",
     btn_enviar_whatsapp: "Enviar por WhatsApp",
     alert_completa_datos: "Por favor completa tu nombre y teléfono para que podamos contactarte.",
     footer_copyright: "Este sitio pertenece a un asesor de ventas autorizado. Este sitio no es, ni pretende hacerse pasar por la página oficial de Totalplay; las marcas y logotipos utilizados pertenecen a sus respectivos titulares.",
-    footer_privacidad: "Aviso de Privacidad", footer_terminos: "Términos y Condiciones",
+    footer_privacidad: "Aviso de Privacidad de Totalplay", footer_terminos: "Términos y Condiciones",
     footer_aviso_asesor: "Aviso de Privacidad del asesor", lead_aviso_pre: "Al continuar aceptas nuestro", lead_aviso_link: "Aviso de Privacidad",
-    footer_precios: "Todos los precios están expresados en MXN y corresponden a la modalidad de pronto pago.",
     wa_aviso_intro: "Hola, quiero que me avisen cuando haya cobertura de TOTALPLAY",
     wa_campo_colonia: "Colonia/SM", wa_campo_nombre: "Nombre", wa_campo_telefono: "Teléfono",
     wa_contratar_intro: "Hola, quiero contratar TOTALPLAY",
@@ -642,9 +641,9 @@ const I18N = {
     alert_elige_tv: "Let us know if you'd like to add TV to your Internet.",
     step4_title: "Ideal Budget",
     step4_subtitle: "How much would you like to invest monthly in your connectivity?",
-    step4_opt1_title: "Essential", step4_opt1_sub: "From $399/month",
-    step4_opt2_title: "Balanced", step4_opt2_sub: "Up to $1,000/month",
-    step4_opt3_title: "Maximum Performance", step4_opt3_sub: "Up to $2,499/month",
+    step4_opt1_title: "Essential", step4_opt1_sub: "From 399MXN/month",
+    step4_opt2_title: "Balanced", step4_opt2_sub: "Up to 1,000MXN/month",
+    step4_opt3_title: "Maximum Performance", step4_opt3_sub: "Up to 2,499MXN/month",
     step4_opt1_sub_dinamico: "From {precio}",
     step4_opt2_sub_dinamico: "Your ideal plan: {precio}",
     step4_opt3_sub_dinamico: "More speed: {precio}",
@@ -660,7 +659,7 @@ const I18N = {
     encuadre_internet: "Your Internet-only quote",
     eyebrow_tv: "Internet + Totalplay TV", eyebrow_internet: "Totalplay Internet Only",
     h3_tv: "Internet + TV", h3_internet: "Internet Only",
-    precio_final_label: "Final price", sin_cargos: "No hidden fees",
+    precio_final_label: "Early payment", sin_cargos: "No hidden fees",
     fibra_dedicada: "Dedicated symmetric fiber optic, installation included",
     mes_suffix: "/month",
     nota_sube: "For {monto} more a month you can {a}upgrade to {mb}{/a}.",
@@ -671,12 +670,12 @@ const I18N = {
     lead_subtitle: "You're one step away from enjoying the best connection. Leave us your info to schedule your installation.",
     lead_resumen_prefix: "You selected: ",
     placeholder_nombre_completo: "Full name",
+    placeholder_nombre_opcional: "Name (optional)", placeholder_tel_opcional: "Phone (optional)",
     btn_enviar_whatsapp: "Send via WhatsApp",
     alert_completa_datos: "Please fill in your name and phone number so we can contact you.",
     footer_copyright: "This site belongs to an authorized sales advisor. This site is not, and does not claim to be, Totalplay's official website; the brands and logos used belong to their respective owners.",
-    footer_privacidad: "Privacy Notice", footer_terminos: "Terms and Conditions",
+    footer_privacidad: "Totalplay Privacy Notice", footer_terminos: "Terms and Conditions",
     footer_aviso_asesor: "Advisor Privacy Notice", lead_aviso_pre: "By continuing you accept our", lead_aviso_link: "Privacy Notice",
-    footer_precios: "All prices are in MXN and correspond to the early-payment (pronto pago) plan.",
     wa_aviso_intro: "Hi, I'd like to be notified when TOTALPLAY coverage is available",
     wa_campo_colonia: "Neighborhood/SM", wa_campo_nombre: "Name", wa_campo_telefono: "Phone",
     wa_contratar_intro: "Hi, I'd like to sign up for TOTALPLAY",
@@ -771,7 +770,7 @@ function aplicarIdioma(lang){
   if(estado.planInfo){
     const resEl = document.getElementById('results-section');
     const leadEl = document.getElementById('lead-section');
-    if(resEl && !resEl.classList.contains('hidden')) mostrarResultados(true);
+    if(resEl) mostrarResultados(true); // también si está oculta, para que al volver ya esté traducida
     if(leadEl && !leadEl.classList.contains('hidden')) showLeadForm(true);
   }
 }
@@ -921,7 +920,8 @@ const estado = {
 };
 
 const num = n => Math.round(n).toLocaleString("es-MX");
-const pesos = n => "$" + num(n);
+// Español: "$830" · Inglés: "830MXN"
+const pesos = n => idiomaActual === 'en' ? num(n) + "MXN" : "$" + num(n);
 
 // Eventos estándar de Meta van con 'track'; los propios (IniciaDiagnostico,
 // CoberturaPositiva, CoberturaNegativa) van con 'trackCustom'.
@@ -1031,14 +1031,11 @@ function verificarCobertura(){
 function avisarCobertura(){
   const nombre = document.getElementById('sc-nombre').value.trim();
   const tel = document.getElementById('sc-tel').value.trim();
-  if(!nombre || !tel){
-    alert(T('alert_nombre_tel'));
-    return;
-  }
+  // Datos opcionales: se avisa por el mismo WhatsApp desde el que escribe.
   let mensaje = T('wa_aviso_intro') + '%0A%0A' +
-    '*' + T('wa_campo_colonia') + ':* ' + encodeURIComponent(estado.zona) + '%0A' +
-    '*' + T('wa_campo_nombre') + ':* ' + encodeURIComponent(nombre) + '%0A' +
-    '*' + T('wa_campo_telefono') + ':* ' + encodeURIComponent(tel);
+    '*' + T('wa_campo_colonia') + ':* ' + encodeURIComponent(estado.zona || '');
+  if(nombre) mensaje += '%0A*' + T('wa_campo_nombre') + ':* ' + encodeURIComponent(nombre);
+  if(tel)    mensaje += '%0A*' + T('wa_campo_telefono') + ':* ' + encodeURIComponent(tel);
   window.open('https://wa.me/' + NUMERO_VENTAS + '?text=' + mensaje, '_blank');
 }
 
@@ -1368,11 +1365,7 @@ function hideLeadForm(){
 function enviarWhatsapp(){
   const nombre = document.getElementById('lead-nombre').value.trim();
   const tel = document.getElementById('lead-tel').value.trim();
-  if(!nombre || !tel){
-    alert(T('alert_completa_datos'));
-    return;
-  }
-
+  // Nombre y teléfono son opcionales: si vienen vacíos, no se incluyen.
   const esTV = estado.paqueteTipo === 'tv';
   const plan = estado.planInfo.plan;
   const nombrePaquete = esTV ? T('eyebrow_tv') : T('eyebrow_internet');
@@ -1389,10 +1382,10 @@ function enviarWhatsapp(){
   let mensaje = T('wa_contratar_intro') + '%0A%0A' +
     // Código interno: 2P = Solo Internet, 3P = Internet + TV, seguido de los megas.
     '*' + T('wa_campo_plan') + ':* ' + encodeURIComponent((esTV ? '3P' : '2P') + '-' + plan.mb) + '%0A' +
-    '*' + T('wa_campo_precio') + ':* ' + encodeURIComponent(pesos(plan.precio) + T('mes_suffix')) + '%0A' +
-    '*' + T('wa_campo_nombre') + ':* ' + encodeURIComponent(nombre) + '%0A' +
-    '*' + T('wa_campo_telefono') + ':* ' + encodeURIComponent(tel) + '%0A' +
-    '*' + T('wa_campo_colonia') + ':* ' + encodeURIComponent(estado.zona || T('wa_sin_indicar'));
+    '*' + T('wa_campo_precio') + ':* ' + encodeURIComponent(pesos(plan.precio) + T('mes_suffix'));
+  if(nombre)      mensaje += '%0A*' + T('wa_campo_nombre') + ':* ' + encodeURIComponent(nombre);
+  if(tel)         mensaje += '%0A*' + T('wa_campo_telefono') + ':* ' + encodeURIComponent(tel);
+  if(estado.zona) mensaje += '%0A*' + T('wa_campo_colonia') + ':* ' + encodeURIComponent(estado.zona);
 
   window.open('https://wa.me/' + NUMERO_VENTAS + '?text=' + mensaje, '_blank');
 }
