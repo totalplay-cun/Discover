@@ -549,6 +549,9 @@ const I18N = {
     step4_opt4_title: "Sin límite", step4_opt4_sub: "Quiero lo mejor disponible",
     results_title: "Tu Cotización Totalplay",
     results_subtitulo: "Basado en tu hogar, esta es la velocidad que necesitas — ni de más, ni de menos.",
+    results_sub_esencial: "La opción más económica para tu hogar.",
+    results_sub_maximo: "Velocidad de sobra para todo lo que tu hogar necesita.",
+    results_sub_sinlimite: "A esta velocidad tu internet no será una limitante en tu día a día.",
     results_disclaimer: "(Esta demostración se genera con los datos que tú mismo ingresaste; es una simulación ilustrativa. Precios de referencia sujetos a la promoción vigente y a la disponibilidad en tu zona.)",
     encuadre_tv: "Tu cotización con Internet + TV Totalplay",
     encuadre_internet: "Tu cotización de Solo Internet",
@@ -576,19 +579,28 @@ const I18N = {
     wa_contratar_intro: "Hola, quiero contratar TOTALPLAY",
     wa_campo_plan: "Plan", wa_campo_precio: "Precio", wa_sin_indicar: "no indicada",
     beneficios: {
-      tv: {
-        base: ["Fibra óptica simétrica", "Más de 190 canales en vivo (122 en HD)", "Anytime: regresa la programación hasta 7 días atrás", "Telefonía ilimitada"],
-        extra500: "Equipo Totalplay TV, Totalplay Surround y WiFi 7 incluidos",
-        extra1000: "Netflix, HBO Max, Disney+, Universal+ y Apple TV incluidos",
-        extra500b: "Netflix, Universal+, Disney+ y Apple TV incluidos",
-        extraDefault: "Netflix, Universal+ y Apple TV de regalo por 5 meses"
+      comunes: {
+        fibra: "Internet simétrico de fibra óptica",
+        modem: "Módem WiFi incluido",
+        telefonia: "Telefonía fija ilimitada",
+        wifi7: "WiFi 7: tecnología de última generación"
       },
       internet: {
-        base: ["Fibra óptica simétrica", "Módem WiFi incluido", "Telefonía ilimitada"],
-        extra500: "WiFi 7 incluido sin costo",
-        extra1000: "Netflix, HBO Max, Disney+, Universal+ y Apple TV incluidos",
-        extra500b: "Netflix, Universal+, Disney+ y Apple TV incluidos",
-        extraDefault: "Netflix, Universal+ y Apple TV de regalo por 3 meses"
+        appleTv3: "Apple TV incluido por 3 meses",
+        appleTv: "Apple TV incluido",
+        clubWifi: "Club Totalplay WiFi",
+        canales: "14 canales incluidos"
+      },
+      tv: {
+        appleTv5: "Apple TV incluido por 5 meses",
+        appleTv: "Apple TV incluido",
+        totalplayTv: "Totalplay TV (4K)",
+        dolbyDigital: "Dolby Digital",
+        nuevoTotalplayTv: "Nuevo Totalplay TV (4K / HDR)",
+        dolby: "Dolby Atmos 360°",
+        surround: "Totalplay Surround",
+        canales: "+190 canales (124 en HD)",
+        anytime: "Anytime: regresa la programación hasta 7 días atrás"
       }
     }
   },
@@ -634,6 +646,9 @@ const I18N = {
     step4_opt4_title: "No limit", step4_opt4_sub: "I want the best available",
     results_title: "Your Totalplay Quote",
     results_subtitulo: "Based on your household, this is the speed you need — not more, not less.",
+    results_sub_esencial: "The most affordable option for your home.",
+    results_sub_maximo: "Plenty of speed for everything your home needs.",
+    results_sub_sinlimite: "At this speed, your internet will never hold you back in your day-to-day.",
     results_disclaimer: "(This demo is generated from the data you entered; it is an illustrative simulation. Reference prices subject to the current promotion and availability in your area.)",
     encuadre_tv: "Your quote with Internet + Totalplay TV",
     encuadre_internet: "Your Internet-only quote",
@@ -661,19 +676,28 @@ const I18N = {
     wa_contratar_intro: "Hi, I'd like to sign up for TOTALPLAY",
     wa_campo_plan: "Plan", wa_campo_precio: "Price", wa_sin_indicar: "not provided",
     beneficios: {
-      tv: {
-        base: ["Symmetric fiber optic", "Over 190 live channels (122 in HD)", "Anytime: rewind programming up to 7 days back", "Unlimited phone service"],
-        extra500: "Totalplay TV equipment, Totalplay Surround and WiFi 7 included",
-        extra1000: "Netflix, HBO Max, Disney+, Universal+ and Apple TV included",
-        extra500b: "Netflix, Universal+, Disney+ and Apple TV included",
-        extraDefault: "Netflix, Universal+ and Apple TV free for 5 months"
+      comunes: {
+        fibra: "Symmetric fiber optic internet",
+        modem: "WiFi modem included",
+        telefonia: "Unlimited landline calls",
+        wifi7: "WiFi 7: latest-generation technology"
       },
       internet: {
-        base: ["Symmetric fiber optic", "WiFi modem included", "Unlimited phone service"],
-        extra500: "WiFi 7 included at no extra cost",
-        extra1000: "Netflix, HBO Max, Disney+, Universal+ and Apple TV included",
-        extra500b: "Netflix, Universal+, Disney+ and Apple TV included",
-        extraDefault: "Netflix, Universal+ and Apple TV free for 3 months"
+        appleTv3: "Apple TV included for 3 months",
+        appleTv: "Apple TV included",
+        clubWifi: "Club Totalplay WiFi",
+        canales: "14 channels included"
+      },
+      tv: {
+        appleTv5: "Apple TV included for 5 months",
+        appleTv: "Apple TV included",
+        totalplayTv: "Totalplay TV (4K)",
+        dolbyDigital: "Dolby Digital",
+        nuevoTotalplayTv: "New Totalplay TV (4K / HDR)",
+        dolby: "Dolby Atmos 360°",
+        surround: "Totalplay Surround",
+        canales: "190+ channels (124 in HD)",
+        anytime: "Anytime: rewind programming up to 7 days back"
       }
     }
   }
@@ -1116,7 +1140,24 @@ function cambiarAPlan(indice){
   mostrarResultados(true);
 }
 
+// Texto bajo "Tu Cotización Totalplay" según el plan mostrado: si coincide
+// con una de las 4 opciones del hogar usa su texto; si el cliente se movió
+// con el enlace "subes a…", se compara contra el plan ideal.
+function claveSubtitulo(){
+  const catalogo = estado.quiereTV ? CATALOGO_TV : CATALOGO_INTERNET;
+  const idx = catalogo.indexOf(estado.planInfo.plan);
+  const fila = PLANES_POR_HOGAR[estado.perfil] || PLANES_POR_HOGAR.small;
+  const claves = { esencial: 'results_sub_esencial', equilibrado: 'results_subtitulo', maximo: 'results_sub_maximo', sinlimite: 'results_sub_sinlimite' };
+  if(estado.opcion && fila[estado.opcion] === idx) return claves[estado.opcion];
+  for(const op of ['equilibrado', 'esencial', 'maximo', 'sinlimite']){
+    if(fila[op] === idx) return claves[op];
+  }
+  if(idx < fila.equilibrado) return claves.esencial;
+  return idx >= fila.sinlimite ? claves.sinlimite : claves.maximo;
+}
+
 function elegirPresupuesto(opcion){
+  estado.opcion = opcion;
   estado.paqueteTipo = estado.quiereTV ? 'tv' : 'internet';
   const plan = planDeOpcion(opcion);
   const planIdeal = planDeOpcion('equilibrado');
@@ -1128,14 +1169,29 @@ function elegirPresupuesto(opcion){
 }
 
 // ============ BENEFICIOS POR PLAN ============
+// Beneficios por plan, según las tarjetas oficiales de Totalplay.
 function beneficiosPara(tipo, mb){
-  const B = I18N[idiomaActual].beneficios[tipo === 'tv' ? 'tv' : 'internet'];
-  const base = B.base.slice();
-  if(mb >= 500) base.push(B.extra500);
-  if(mb >= 1000) base.push(B.extra1000);
-  else if(mb >= 500) base.push(B.extra500b);
-  else base.push(B.extraDefault);
-  return base;
+  const B = I18N[idiomaActual].beneficios;
+  const C = B.comunes;
+  const lista = [];
+  if(tipo === 'tv'){
+    const T2 = B.tv;
+    if(mb >= 350) lista.push(T2.appleTv);
+    else if(mb >= 150) lista.push(T2.appleTv5);
+    if(mb >= 350){ lista.push(T2.nuevoTotalplayTv, T2.dolby); }
+    else lista.push(T2.totalplayTv, T2.dolbyDigital);
+    if(mb >= 500) lista.push(T2.surround);
+    lista.push(T2.canales, T2.anytime);
+    if(mb >= 500) lista.push(C.wifi7);
+  } else {
+    const I = B.internet;
+    if(mb >= 350) lista.push(I.appleTv);
+    else if(mb >= 150) lista.push(I.appleTv3);
+    lista.push(I.clubWifi, I.canales);
+    if(mb >= 500) lista.push(C.wifi7);
+  }
+  lista.push(C.fibra, C.modem, C.telefonia);
+  return lista;
 }
 
 // ============ RESULTADOS ============
@@ -1203,7 +1259,7 @@ function mostrarResultados(silencioso){
     document.getElementById('results-section').classList.remove('hidden');
   }
 
-  document.getElementById('res-subtitulo').textContent = T('results_subtitulo');
+  document.getElementById('res-subtitulo').textContent = T(claveSubtitulo());
 
   document.getElementById('grid-planes').innerHTML = tarjetaPlan();
 
