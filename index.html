@@ -483,6 +483,7 @@ tailwind.config = {
 <p><strong class="text-ink">¿Para qué usamos tus datos?</strong><br>Finalidades necesarias: verificar cobertura, elaborar tu cotización, contactarte por WhatsApp o teléfono, y dar seguimiento a tu solicitud de contratación e instalación. Finalidades adicionales: medir el desempeño de esta página y mejorar nuestra publicidad. Si no deseas que tus datos se usen para estas últimas, escríbenos a angelisaac311@gmail.com y dejaremos de hacerlo, sin que esto afecte tu solicitud.</p>
 <p><strong class="text-ink">¿Con quién compartimos tus datos?</strong><br>Para dar trámite a tu contratación, podemos compartir tus datos con Totalplay y con sus áreas o proveedores involucrados en la venta e instalación. Los datos de navegación son procesados por Meta Platforms mediante su Pixel. No vendemos tus datos a terceros.</p>
 <p><strong class="text-ink">Derechos ARCO y revocación</strong><br>Puedes acceder, rectificar o cancelar tus datos, oponerte a su tratamiento y revocar tu consentimiento enviando un correo a angelisaac311@gmail.com con tu nombre, teléfono y la solicitud que deseas realizar. Responderemos en los plazos que marca la ley.</p>
+<p><strong class="text-ink">Cobertura</strong><br>El resultado de la verificación de cobertura en esta página es informativo. La disponibilidad del servicio está sujeta a confirmación técnica en tu domicilio y puede cambiar sin previo aviso.</p>
 <p><strong class="text-ink">Cambios a este aviso</strong><br>Cualquier modificación se publicará en esta misma página.</p>
 <p>Al enviar tus datos en esta página, aceptas el tratamiento descrito en este aviso. Para conocer el aviso de privacidad de Totalplay, consulta <a class="underline text-signal" href="https://www.totalplay.com.mx/avisodeprivacidad" target="_blank" rel="noopener">totalplay.com.mx/avisodeprivacidad</a>.</p>
 </div>
@@ -496,6 +497,7 @@ tailwind.config = {
 <p><strong class="text-ink">What do we use your data for?</strong><br>Necessary purposes: checking coverage, preparing your quote, contacting you by WhatsApp or phone, and following up on your sign-up and installation request. Additional purposes: measuring this page's performance and improving our advertising. If you do not want your data used for the latter, write to angelisaac311@gmail.com and we will stop, without affecting your request.</p>
 <p><strong class="text-ink">Who do we share your data with?</strong><br>To process your sign-up, we may share your data with Totalplay and the teams or providers involved in the sale and installation. Browsing data is processed by Meta Platforms through its Pixel. We do not sell your data to third parties.</p>
 <p><strong class="text-ink">ARCO rights and revocation</strong><br>You may access, rectify or delete your data, object to its processing and revoke your consent by emailing angelisaac311@gmail.com with your name, phone number and the request you wish to make. We will respond within the time limits set by law.</p>
+<p><strong class="text-ink">Coverage</strong><br>The coverage check result on this page is for reference only. Service availability is subject to technical confirmation at your address and may change without prior notice.</p>
 <p><strong class="text-ink">Changes to this notice</strong><br>Any changes will be posted on this page.</p>
 <p>By submitting your data on this page, you accept the processing described in this notice. For Totalplay's privacy notice, see <a class="underline text-signal" href="https://www.totalplay.com.mx/avisodeprivacidad" target="_blank" rel="noopener">totalplay.com.mx/avisodeprivacidad</a>.</p>
 </div>
@@ -575,7 +577,7 @@ const I18N = {
     wa_campo_plan: "Plan", wa_campo_precio: "Precio", wa_sin_indicar: "no indicada",
     beneficios: {
       tv: {
-        base: ["Fibra óptica simétrica", "Más de 190 canales en vivo (122 en HD)", "+69 horas de contenido Anytime", "Telefonía ilimitada"],
+        base: ["Fibra óptica simétrica", "Más de 190 canales en vivo (122 en HD)", "Anytime: regresa la programación hasta 7 días atrás", "Telefonía ilimitada"],
         extra500: "Equipo Totalplay TV, Totalplay Surround y WiFi 7 incluidos",
         extra1000: "Netflix, HBO Max, Disney+, Universal+ y Apple TV incluidos",
         extra500b: "Netflix, Universal+, Disney+ y Apple TV incluidos",
@@ -660,7 +662,7 @@ const I18N = {
     wa_campo_plan: "Plan", wa_campo_precio: "Price", wa_sin_indicar: "not provided",
     beneficios: {
       tv: {
-        base: ["Symmetric fiber optic", "Over 190 live channels (122 in HD)", "+69 hours of Anytime content", "Unlimited phone service"],
+        base: ["Symmetric fiber optic", "Over 190 live channels (122 in HD)", "Anytime: rewind programming up to 7 days back", "Unlimited phone service"],
         extra500: "Totalplay TV equipment, Totalplay Surround and WiFi 7 included",
         extra1000: "Netflix, HBO Max, Disney+, Universal+ and Apple TV included",
         extra500b: "Netflix, Universal+, Disney+ and Apple TV included",
@@ -865,6 +867,34 @@ function evento(nombre, params){
 }
 
 // ============ COBERTURA ============
+// Localidades completas con cobertura (fuera de Cancún). Cada una se
+// puede buscar por su nombre o por los nombres/colonias con que la gente
+// suele referirse a ella.
+const COBERTURA_LOCALIDADES = [
+  { nombre: "Playa del Carmen", alias: ["PDC", "Colosio", "Misión de las Flores", "Las Palmas", "La Toscana", "Ejidal", "Calica", "Nicte-Ha", "Nicte Ha"] },
+  { nombre: "Puerto Morelos", alias: [] },
+  { nombre: "Tulum", alias: ["La Veleta"] }
+];
+
+// Si el texto coincide con una localidad o uno de sus alias, devuelve
+// { localidad, etiqueta } (etiqueta = cómo se mostrará la zona); si no, null.
+function buscaLocalidad(texto){
+  const t = normaliza(texto).replace(/[,.]/g, ' ').replace(/\s+/g, ' ').trim();
+  for(const loc of COBERTURA_LOCALIDADES){
+    const nom = normaliza(loc.nombre);
+    if(t === nom) return { localidad: loc.nombre, etiqueta: loc.nombre };
+    for(const a of loc.alias){
+      const al = normaliza(a);
+      // Acepta el alias solo, o el alias seguido del nombre de la localidad
+      // (p. ej. "Colosio Playa del Carmen").
+      if(t === al || t === al + ' ' + nom){
+        return { localidad: loc.nombre, etiqueta: a + ', ' + loc.nombre };
+      }
+    }
+  }
+  return null;
+}
+
 function normaliza(str){
   return String(str||"").normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().trim();
 }
@@ -905,7 +935,11 @@ function verificarCobertura(){
     cubierto = COBERTURA_COLONIAS.some(c => normaliza(c) === norm);
   }
 
-  estado.zona = valor;
+  // Playa del Carmen, Puerto Morelos y Tulum (con sus alias).
+  const loc = (!esNumero) ? buscaLocalidad(valor) : null;
+  if(loc) cubierto = true;
+
+  estado.zona = loc ? loc.etiqueta : valor;
   estado.conCobertura = cubierto;
   msg.classList.remove('hidden');
 
@@ -1298,6 +1332,18 @@ function sugerenciasPara(query){
       const titulo = c.toLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase(); });
       resultados.push({ valor: c, texto: titulo });
     }
+  });
+
+  COBERTURA_LOCALIDADES.forEach(function(loc){
+    if(normaliza(loc.nombre).indexOf(qNorm) !== -1){
+      resultados.push({ valor: loc.nombre, texto: loc.nombre });
+    }
+    loc.alias.forEach(function(a){
+      if(a === 'Nicte Ha') return; // variantes solo para búsqueda
+      if(normaliza(a).indexOf(qNorm) !== -1){
+        resultados.push({ valor: a, texto: a + ' · ' + loc.nombre });
+      }
+    });
   });
 
   const vistos = {};
